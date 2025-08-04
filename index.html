@@ -4,11 +4,14 @@
     	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
     	<script>
 			Pace.on('start', function() {
-				// Create mask div appended directly to body, so it layers correctly over Pace layers
-				var maskDiv = document.createElement('div');
-				maskDiv.className = 'mask';
-				document.body.appendChild(maskDiv);
+			  var paceElement = document.querySelector('.pace');
+			  if (paceElement) {
+			    var maskDiv = document.createElement('div');
+			    maskDiv.className = 'mask';
+			    paceElement.appendChild(maskDiv);
+			  }
 			});
+
 
 			Pace.on('done', function() {
 			  var paceElement = document.querySelector('.pace');
@@ -75,7 +78,6 @@
 			.mask {
 			  position: absolute;
 			  inset: 0;
-			  background-color: #121212;
 			  pointer-events: none;
 			  z-index: 9999;
 
