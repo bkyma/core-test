@@ -73,6 +73,24 @@
 			  opacity: 0; /* you can keep this for instant hidden via opacity */
 			  pointer-events: none;
 			}
+			.mask {
+			  position: fixed;
+			  inset: 0;
+			  z-index: 9999;  /* very high so it layers above all */
+			  background-color: #121212;
+			  pointer-events: none;
+
+			  mask-image: url('core-cutout.svg');
+			  mask-repeat: no-repeat;
+			  mask-position: center;
+			  mask-size: contain;
+
+			  -webkit-mask-image: url('core-cutout.svg');
+			  -webkit-mask-repeat: no-repeat;
+			  -webkit-mask-position: center;
+			  -webkit-mask-size: contain;
+			}
+
 		</style>
 	</head>
 	<body>
