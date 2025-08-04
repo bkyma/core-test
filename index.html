@@ -11,6 +11,41 @@
 				paceElement.appendChild(maskDiv);
 				}
 			});
+			let loadingStartedAt = Date.now();
+
+			Pace.on('start', function() {
+			loadingStartedAt = Date.now();
+			});
+
+			Pace.on('done', function() {
+			const elapsed = Date.now() - loadingStartedAt;
+			const minDuration = 5000; // 5 seconds in milliseconds
+			const remaining = minDuration - elapsed;
+
+			if (remaining > 0) {
+			// Delay hiding/removal until min 5s total time passed
+			setTimeout(() => {
+			finishPace();
+			}, remaining);
+			} else {
+			finishPace();
+			}
+			});
+
+			function finishPace() {
+			// Your code to fadeout pace overlay, etc.
+			var paceElement = document.querySelector('.pace');
+			if (paceElement) {
+			paceElement.style.display = 'block'; // remove inline display:none
+			setTimeout(function() {
+			paceElement.classList.add('pace-fadeout');
+			setTimeout(function() {
+			paceElement.style.display = 'none';
+			}, 2000); // fade duration
+			}, 50);
+			}
+			}
+
 			Pace.on('done', function() {
 			  var paceElement = document.querySelector('.pace');
 			  if (paceElement) {
