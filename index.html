@@ -75,21 +75,26 @@
 			}
 			.mask {
 			  position: fixed;
-			  inset: 0;
-			  z-index: 9999;  /* very high so it layers above all */
+			  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0; */
 			  background-color: #121212;
 			  pointer-events: none;
+			  z-index: 9999;
 
+			  /* Use mask-image with your SVG */
 			  mask-image: url('core-cutout.svg');
 			  mask-repeat: no-repeat;
 			  mask-position: center;
-			  mask-size: contain;
 
+			  /* Set mask size to 300px width, adjusting height automatically */
+			  mask-size: 300px auto;
+
+			  /* WebKit prefix for Safari */
 			  -webkit-mask-image: url('core-cutout.svg');
 			  -webkit-mask-repeat: no-repeat;
 			  -webkit-mask-position: center;
-			  -webkit-mask-size: contain;
+			  -webkit-mask-size: 300px auto;
 			}
+
 
 		</style>
 	</head>
