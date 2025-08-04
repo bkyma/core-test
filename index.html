@@ -11,6 +11,7 @@
 				paceElement.appendChild(maskDiv);
 				}
 			});
+			
 			Pace.on('done', function() {
 			  var paceElement = document.querySelector('.pace');
 			  if (paceElement) {
@@ -77,7 +78,7 @@
 			  position: fixed;
 			  inset: 0;
 			  width: 100vw;
-			  height:;
+			  height: 100vh;
 			  z-index: 9999;  /* very high so it layers above all */
 			  background-color: #121212;
 			  pointer-events: none;
