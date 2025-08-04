@@ -11,58 +11,23 @@
 				paceElement.appendChild(maskDiv);
 				}
 			});
-			let loadingStartedAt = Date.now();
-
-			Pace.on('start', function() {
-			loadingStartedAt = Date.now();
-			});
-
 			Pace.on('done', function() {
-			const elapsed = Date.now() - loadingStartedAt;
-			const minDuration = 5000; // 5 seconds in milliseconds
-			const remaining = minDuration - elapsed;
+			  var paceElement = document.querySelector('.pace');
+			  if (paceElement) {
+			    // Remove inline display:none set by Pace.js
+			    paceElement.style.display = 'block';  // or '' to clear inline style
 
-			if (remaining > 0) {
-			// Delay hiding/removal until min 5s total time passed
-			setTimeout(() => {
-			finishPace();
-			}, remaining);
-			} else {
-			finishPace();
-			}
+			    // Small delay before fade to ensure 'done' state has fully applied
+			    setTimeout(function() {
+			      paceElement.classList.add('pace-fadeout');
+
+			      // After the fade transition, completely hide the element
+			      setTimeout(function() {
+			        paceElement.style.display = 'none';
+			      }, 1000);  // match CSS transition duration
+			    }, 50);
+			  }
 			});
-
-			function finishPace() {
-			// Your code to fadeout pace overlay, etc.
-			var paceElement = document.querySelector('.pace');
-			if (paceElement) {
-			paceElement.style.display = 'block'; // remove inline display:none
-			setTimeout(function() {
-			paceElement.classList.add('pace-fadeout');
-			setTimeout(function() {
-			paceElement.style.display = 'none';
-			}, 2000); // fade duration
-			}, 50);
-			}
-			}
-
-			// Pace.on('done', function() {
-			//   var paceElement = document.querySelector('.pace');
-			//   if (paceElement) {
-			//     // Remove inline display:none set by Pace.js
-			//     paceElement.style.display = 'block';  // or '' to clear inline style
-
-			//     // Small delay before fade to ensure 'done' state has fully applied
-			//     setTimeout(function() {
-			//       paceElement.classList.add('pace-fadeout');
-
-			//       // After the fade transition, completely hide the element
-			//       setTimeout(function() {
-			//         paceElement.style.display = 'none';
-			//       }, 1000);  // match CSS transition duration
-			//     }, 50);
-			//   }
-			// });
 
     	</script>
     	<style>
@@ -112,7 +77,7 @@
 			  position: fixed;
 			  inset: 0;
 			  width: 100vw;
-			  height: 100vh;
+			  height:;
 			  z-index: 9999;  /* very high so it layers above all */
 			  background-color: #121212;
 			  pointer-events: none;
