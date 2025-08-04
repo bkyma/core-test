@@ -73,7 +73,7 @@
 			  pointer-events: none;
 			}
 			.mask {
-			  position: fixed;
+			  position: absolute;
 			  inset: 0;
 			  background-color: #121212;
 			  pointer-events: none;
@@ -82,7 +82,7 @@
 			  mask-image: url('core-logo.svg');
 			  mask-repeat: no-repeat;
 			  mask-position: center;
-			  mask-size: 300px auto;
+			  mask-size: 150px auto;
 
 			  /* Invert mask so logo area is transparent */
 			  mask-composite: exclude;            /* standard, but limited support */
@@ -90,7 +90,7 @@
 			  -webkit-mask-image: url('core-logo.svg');
 			  -webkit-mask-repeat: no-repeat;
 			  -webkit-mask-position: center;
-			  -webkit-mask-size: 300px auto;
+			  -webkit-mask-size: 150px auto;
 			  -webkit-mask-composite: destination-out; /* invert mask in WebKit */
 			}
 
