@@ -1,0 +1,81 @@
+<html>
+	<head>
+    	<script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+    	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
+    	<script>
+			Pace.on('start', function() {
+				var paceElement = document.querySelector('.pace');
+				if (paceElement) {
+				var maskDiv = document.createElement('div');
+				maskDiv.className = 'mask';
+				paceElement.appendChild(maskDiv);
+				}
+			});
+			Pace.on('done', function() {
+			  var paceElement = document.querySelector('.pace');
+			  if (paceElement) {
+			    // Remove inline display:none set by Pace.js
+			    paceElement.style.display = 'block';  // or '' to clear inline style
+
+			    // Small delay before fade to ensure 'done' state has fully applied
+			    setTimeout(function() {
+			      paceElement.classList.add('pace-fadeout');
+
+			      // After the fade transition, completely hide the element
+			      setTimeout(function() {
+			        paceElement.style.display = 'none';
+			      }, 1000);  // match CSS transition duration
+			    }, 50);
+			  }
+			});
+
+    	</script>
+    	<style>
+    		body {
+    			background-color: black;
+    			height: 100vh;
+    		}
+			.pace {
+				-webkit-pointer-events: none;
+				pointer-events: none;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				user-select: none;
+			    background-color: black;
+			    height: 100vh;
+			    width: 100vw;
+			    position: absolute;
+			    top: 0;
+			    z-index: 100;
+			}
+			.pace .pace-progress {
+				/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7dd3fe+0,ef5100+100 */
+				background: linear-gradient(135deg,  #7dd3fe 0%,#ef5100 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+				position: fixed;
+				height: 100vh;
+				z-index: 100;
+				top: 0;
+				right: 100%;
+				bottom: 0;
+				width: 100%;
+			}
+			.pace {
+			  transition: opacity 1s ease;
+			  opacity: 1;
+			}
+			.pace.pace-fadeout {
+			  opacity: 0;
+			  pointer-events: none; /* so it doesn't interfere with clicks */
+			}
+			.pace-inactive {
+			  /* Remove display: none to allow fade */
+			  /* display: none; */
+			  opacity: 0; /* you can keep this for instant hidden via opacity */
+			  pointer-events: none;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="screenshot.png" alt="ss" style="width:100%;height:auto;" />
+	</body>
+</html>
