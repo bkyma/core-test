@@ -3,15 +3,6 @@
     	<script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
     	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
     	<script>
-			Pace.on('start', function() {
-				var paceElement = document.querySelector('.pace');
-				if (paceElement) {
-				var maskDiv = document.createElement('div');
-				maskDiv.className = 'mask';
-				paceElement.appendChild(maskDiv);
-				}
-			});
-			
 			Pace.on('done', function() {
 			  var paceElement = document.querySelector('.pace');
 			  if (paceElement) {
@@ -77,22 +68,25 @@
 			.mask {
 			  position: fixed;
 			  inset: 0;
-			  width: 100vw;
-			  height: 100vh;
-			  z-index: 9999;  /* very high so it layers above all */
 			  background-color: #121212;
 			  pointer-events: none;
+			  z-index: 9999;
 
-			  mask-image: url('core-cutout.png');
+			  mask-image: url('core-cutout.svg');
 			  mask-repeat: no-repeat;
 			  mask-position: center;
-			  mask-size: contain;
+			  mask-size: 300px auto;
 
-			  -webkit-mask-image: url('core-cutout.png');
+			  /* Invert mask so logo area is transparent */
+			  mask-composite: exclude;            /* standard, but limited support */
+			  
+			  -webkit-mask-image: url('core-cutout.svg');
 			  -webkit-mask-repeat: no-repeat;
 			  -webkit-mask-position: center;
-			  -webkit-mask-size: contain;
+			  -webkit-mask-size: 300px auto;
+			  -webkit-mask-composite: destination-out; /* invert mask in WebKit */
 			}
+
 
 		</style>
 	</head>
